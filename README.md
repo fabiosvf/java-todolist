@@ -76,12 +76,42 @@
 - Para baixar o pacote de arquivos já com tudo configurado, clique no botão `GENERATE CTRL + ENTER`
 - Descompate o conteudo do arquivo em uma pasta para iniciar o desenvolvimento da aplicação.
 
+## Configurando o Spring Boot DevTools
+- O Spring Boot DevTools é uma ferramenta útil para auxiliar no desenvolvimento de aplicativos Spring Boot. Ele oferece recursos que facilitam o processo de desenvolvimento.
+
+### Reinicialização Automática
+- O Spring Boot DevTools permite reiniciar automaticamente o serviço toda vez que a aplicação sofre uma alteração no código-fonte. Isso evita a necessidade de encerrar e reiniciar manualmente o serviço após cada alteração.
+
+### Executando a Aplicação
+- Para rodar a aplicação, geralmente você encontra uma classe Java na raiz do projeto que possui a anotação `@SpringBootApplication` e um método `main` do tipo `public static void`. Existem duas opções para executar a aplicação:
+	- **Opção "Run" e "Debug":**
+		- Essas opções estão disponíveis na parte superior do ambiente de desenvolvimento.
+    - Ambas permitem executar a aplicação.
+    - A opção "Debug" permite parar em breakpoints para depurar problemas ou examinar o conteúdo de variáveis.
+		- Exemplo de hierarquia de pastas:
+			- No exemplo, a classe principal fica em `src/main/java/br/com/socodigo/todolist/TodolistApplication.java`.
+    	- O pacote do projeto é `br.com.socodigo.todolist`.
+    	- A classe `TodolistApplication` é marcada com a anotação `@SpringBootApplication`, indicando que ela é a classe principal.
+    	- O método `public static void main` é usado para iniciar a execução do projeto.
+	- **Executando com o Maven:**
+		- Você pode usar o comando abaixo para executar a aplicação através do Maven:
+```
+$ mvn spring-boot:run
+```
+
+
+
 ## Adicionando dependências no projeto
 - Abra o arquivo `pom.xml`
 - As dependências encontram-se mapeadas entre as TAGs `<dependencies></dependencies>`
 - Segue uma relação das dependências atuais do projeto:
 ```
 <dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -124,3 +154,9 @@
 		</dependency>
 	</dependencies>
 ```
+
+## Publicando a aplicação em um Host Gratuito
+- Existem várias formas de publicar a versão da nossa aplicação em produção, e neste projeto vamos testar um Host Gratuito conhecido como Render, segue o link do Site Oficial [https://render.com/]
+- Ao acessar o site pela primeira vez, é necessário fazer um cadastro. Para facilitar o processo, utilize a sua conta do GitHub
+- Neste exemplo vamos utilizar o Docker para subir uma imagem com todas as configurações do Java, isso facilita a publicação no ambiente
+- Crie o arquivo `Dockerfile` na raiz do projeto, e adicione as instruções que serão aplicadas no `Render` para a publicação da aplicação no `Docker`

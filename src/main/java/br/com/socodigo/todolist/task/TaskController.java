@@ -56,19 +56,17 @@ public class TaskController {
         var idUser = request.getAttribute("idUser");
 
         var taskToUpdate = this.taskRepository.findById(id).orElse(null);
-        if (taskToUpdate != null) {
-            if (!taskToUpdate.getIdUser().equals(idUser)){
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Task inválida");    
-            }
+        if (taskToUpdate == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Tarefa não encontrada");
+        }
 
-            Utils.copyNonNullProperties(taskModel, taskToUpdate);
-            this.taskRepository.save(taskToUpdate);
-            taskModel = taskToUpdate;
+        if (!taskToUpdate.getIdUser().equals(idUser)){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuário não tem permissão para alterar essa tarefa");
         }
-        else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Task não encontrada");
-        }
+
+        Utils.copyNonNullProperties(taskModel, taskToUpdate);
+        this.taskRepository.save(taskToUpdate);
         
-        return ResponseEntity.status(HttpStatus.OK).body(taskModel);
+        return ResponseEntity.status(HttpStatus.OK).body(taskToUpdate);
     }    
 }
