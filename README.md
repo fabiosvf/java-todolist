@@ -12,7 +12,7 @@
   - **Aula 04 - Atualizando tarefas e validação de rotas**
     - Nessa aula vamos implementar melhorias e funcionalidades e enriquecer a interatividade do usuário com a nossa aplicação.
   - **Aula 05 - Deploy do Back-End**
-		- Nessa aula você vai aprender sobre validações, ferramentas e deploy da aplicação Spring Boot. Vai conhecer ferramentas valiosas e colocar seu projeto no mundo.
+    - Nessa aula você vai aprender sobre validações, ferramentas e deploy da aplicação Spring Boot. Vai conhecer ferramentas valiosas e colocar seu projeto no mundo.
 
 ## Instalando e Configurando o Java no Windows
 - Instale a versão 17 do Java á partir do seguinte link [https://download.oracle.com/java/17/archive/jdk-17.0.6_windows-x64_bin.msi]
